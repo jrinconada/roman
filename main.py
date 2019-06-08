@@ -1,4 +1,5 @@
-from translator import translate
+from translator_a import translate
+from translator_a import show
 
 
 # Input
@@ -6,6 +7,8 @@ from translator import translate
 number = 18
 
 result = translate(number)
+
+show(100)
 
 # Output
 print(result)
