@@ -1,15 +1,10 @@
 import unittest
-from translator_b import translate
+from util import get_digit
+import translator_a
+import translator_b
 
 
 class TestTranslate(unittest.TestCase):
-    def test_translate(self):
-        roman10 = ('I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X')
-        roman100 = ('X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', 'C')
-
-        for i, r in enumerate(roman10):  # First 10
-            self.assertEqual(translate(i + 1), r)
-
-        for i, r100 in enumerate(roman100):  # From 11 to 111
-            for j, r10 in enumerate(roman10):
-                self.assertEqual(translate(((i+1)*10 + j+1)), r100 + r10)
+    def test_translate_b(self):
+        for i in range(1, 4000):
+            self.assertEqual(translator_a.translate(i), translator_b.translate(i))
