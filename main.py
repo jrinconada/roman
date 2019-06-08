@@ -3,7 +3,7 @@ from translator import translate
 
 # Input
 # number = eval(input('Give me a number: '))
-number = 8
+number = 18
 
 result = translate(number)
 
