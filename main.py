@@ -4,11 +4,11 @@ from translator_a import show
 
 # Input
 # number = eval(input('Give me a number: '))
-number = 18
+number = 3752
 
 result = translate(number)
 
-show(100)
+show(1200)
 
 # Output
 print(result)
