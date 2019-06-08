@@ -1,9 +1,14 @@
+from util import get_digit
 
-TO_ROMAN = {1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M'}
+
+TO_ROMAN = {1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M', 5000: '', 10000: ''}
 TO_DECIMAL = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
 
 
 def to_roman(number, unit, half, top):
+    """ Given a digit and the range is on (unit, half, top) it is on adds as many roman numerals as necessary
+        Sample call: to_roman(8, 'I', 'V', 'X') -> 'VIII'
+    """
     result = ''
     repeated = 0
 
@@ -22,10 +27,10 @@ def to_roman(number, unit, half, top):
 
 
 def translate(number):
+    """ Given a number between 1 and 3999 returns the equivalent roman numeral """
     result = ''
 
-    remains = number // 10
-    result = to_roman(remains, TO_ROMAN[10], TO_ROMAN[50], TO_ROMAN[100])
-    result += to_roman(number - 10, TO_ROMAN[1], TO_ROMAN[5], TO_ROMAN[10])
+    for i in reversed(range(1, 5)):  # Run the function for every range of roman numerals
+        result += to_roman(get_digit(number, i), TO_ROMAN[10**(i-1)], TO_ROMAN[10**(i-1) * 5], TO_ROMAN[10**i])
 
     return result

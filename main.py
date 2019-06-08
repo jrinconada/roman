@@ -1,4 +1,4 @@
-from translator_a import translate
+from translator_b import translate
 from translator_a import show
 from validation import valid
 

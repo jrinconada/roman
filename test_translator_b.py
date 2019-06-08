@@ -1,5 +1,4 @@
 import unittest
-from util import get_digit
 import translator_a
 import translator_b
 
