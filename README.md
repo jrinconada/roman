@@ -1,2 +1,2 @@
-# roman
-Roman numeral translating with different algorithms
+# Roman
+Trying different algorithms to translate modern decimal numbers to roman numerals
