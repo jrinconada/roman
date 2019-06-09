@@ -2,7 +2,9 @@ from util import get_digit
 
 
 TO_ROMAN = {1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M', 5000: '', 10000: ''}
-TO_DECIMAL = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+EQUIVALENCES_TO_10 = {'I': 1, 'V': 5, 'X': 10}
+EQUIVALENCES_TO_100 = {'X': 10, 'L': 50, 'C': 100}
+EQUIVALENCES_TO_1000 = {'C': 100, 'D': 500, 'M': 1000}
 
 
 def to_roman(number, unit, half, top):
@@ -26,11 +28,30 @@ def to_roman(number, unit, half, top):
     return result
 
 
-def translate(number):
+def translate_to_roman(number):
     """ Given a number between 1 and 3999 returns the equivalent roman numeral """
     result = ''
 
     for i in reversed(range(1, 5)):  # Run the function for every range of roman numerals
         result += to_roman(get_digit(number, i), TO_ROMAN[10**(i-1)], TO_ROMAN[10**(i-1) * 5], TO_ROMAN[10**i])
+
+    return result
+
+
+def translate_to_decimal(roman):
+    """ Given a roman numeral returns the equivalent in decimal number system """
+    decimal = to_decimal(roman, EQUIVALENCES_TO_10)
+    return decimal
+
+
+def to_decimal(roman, equivalent):
+    result = 0
+    previous = 0
+    for letter in roman:  # Starting in the second element
+        if equivalent[letter] <= previous:  # Adding if I, II, III, V, VI, VII, VIII or X
+            result += equivalent[letter]
+        else:  # Subtracting if IV or IX
+            result += equivalent[letter] - 2 * previous  # Must subtract the current unit and the previously added
+        previous = equivalent[letter]
 
     return result
