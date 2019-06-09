@@ -12,7 +12,8 @@ if number.isdigit():  # Decimal number to roman numeral
     else:
         result = translate_to_roman(eval(number))
 else:  # Roman numeral to decimal number
-    result = translate_to_decimal(number)
+    result = translate_to_decimal(number.upper())
+
 
 # Output
 print(result)

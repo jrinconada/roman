@@ -2,9 +2,7 @@ from util import get_digit
 
 
 TO_ROMAN = {1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M', 5000: '', 10000: ''}
-EQUIVALENCES_TO_10 = {'I': 1, 'V': 5, 'X': 10}
-EQUIVALENCES_TO_100 = {'X': 10, 'L': 50, 'C': 100}
-EQUIVALENCES_TO_1000 = {'C': 100, 'D': 500, 'M': 1000}
+TO_DECIMAL = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
 
 
 def to_roman(number, unit, half, top):
@@ -40,18 +38,18 @@ def translate_to_roman(number):
 
 def translate_to_decimal(roman):
     """ Given a roman numeral returns the equivalent in decimal number system """
-    decimal = to_decimal(roman, EQUIVALENCES_TO_10)
+    decimal = to_decimal(roman)
     return decimal
 
 
-def to_decimal(roman, equivalent):
+def to_decimal(roman):
     result = 0
     previous = 0
     for letter in roman:  # Starting in the second element
-        if equivalent[letter] <= previous:  # Adding if I, II, III, V, VI, VII, VIII or X
-            result += equivalent[letter]
+        if TO_DECIMAL[letter] <= previous:  # Adding if I, II, III, V, VI, VII, VIII or X
+            result += TO_DECIMAL[letter]
         else:  # Subtracting if IV or IX
-            result += equivalent[letter] - 2 * previous  # Must subtract the current unit and the previously added
-        previous = equivalent[letter]
+            result += TO_DECIMAL[letter] - 2 * previous  # Must subtract the current unit and the previously added
+        previous = TO_DECIMAL[letter]
 
     return result
