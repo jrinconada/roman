@@ -1,10 +1,8 @@
 from util import get_digit
-
-
-ROMAN_10 = ('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X')
-ROMAN_100 = ('', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', 'C')
-ROMAN_1000 = ('', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM', 'M')
-ROMAN_10000 = ('', 'M', 'MM', 'MMM')
+from constants import ROMAN_10
+from constants import ROMAN_100
+from constants import ROMAN_1000
+from constants import ROMAN_10000
 
 
 def translate(number):

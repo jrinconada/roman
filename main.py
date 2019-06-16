@@ -4,20 +4,32 @@ from translator_a import show
 from validation import valid_number
 from validation import valid_word
 from validation import valid_letters
+from validation import no_more_than_one
+from validation import no_more_than_three
 
 
 # Input
 number = input('Give me a number (roman or decimal): ')
-if number.isdigit():  # Decimal number to roman numeral
-    if not valid_number(eval(number)):
-        result = "It must be an integer number between 1 and 3999"
-    else:
-        result = translate_to_roman(eval(number))
-elif not valid_word(number):  # Roman numeral to decimal number
-    result = "Invalid letter, must be one of these: " + valid_letters()
-else:
-    result = translate_to_decimal(number.upper())
 
+# Basic validation
+to_roman = number.isdigit()
+result = ''
+if to_roman and not valid_number(eval(number)):  # Validate range
+    result = 'It must be an integer number between 1 and 3999'
+elif not valid_word(number):  # Validate letters
+    result = 'Invalid letter, must be one of these: ' + valid_letters()
+
+# Translation
+if not result:
+    if to_roman:  # Decimal number to roman numeral
+        result = translate_to_roman(eval(number))
+    else:  # Roman numeral to decimal number
+        result = translate_to_decimal(number.upper())
+
+# Strict roman numeral validation
+if not to_roman:
+    if not no_more_than_three(number.upper()) or not no_more_than_one(number.upper()):
+        result = str(result) + ' (but it is not following the rules)'
 
 # Output
 print(result)
