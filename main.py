@@ -7,6 +7,7 @@ from validation import valid_letters
 from validation import more_than_one_5
 from validation import more_than_three
 from validation import invalid_subtractions
+from validation import invalid_order
 
 
 # Input
@@ -29,7 +30,8 @@ if not result:
 
 # Strict roman numeral validation
 if not to_roman:
-    if more_than_three(number.upper()) or more_than_one_5(number.upper()) or invalid_subtractions(number.upper()):
+    if more_than_three(number.upper()) or more_than_one_5(number.upper()) \
+            or invalid_subtractions(number.upper()) or invalid_order(number.upper()):
         result = str(result) + ' (but it is not following the rules) it should be ' + translate_to_roman(result)
 
 # Output

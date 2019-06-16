@@ -68,3 +68,16 @@ def invalid_subtractions(number=''):
         prev = letter
 
     return False
+
+
+def invalid_order(number=''):
+    """ Returns True if there are smaller numbers before bigger ones
+    and it is not a valid subtraction (ex: IC, IIV, VC, XDM) """
+    for i in range(len(number)):
+        letter = number[i]
+        for j in range(i + 1, len(number)):
+            if TO_DECIMAL[letter] < TO_DECIMAL[number[j]]:  # Invalid order unless it is a valid subtraction
+                if not ((i == j - 1) and (letter + number[j]) in VALID_SUBTRACTIONS):
+                    return True
+
+    return False
