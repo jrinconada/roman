@@ -19,7 +19,7 @@ result = ''
 if to_roman and not valid_number(eval(number)):  # Validate range
     result = 'It must be an integer number between 1 and 3999'
 elif not valid_word(number):  # Validate letters
-    result = 'Invalid letter, must be one of these: ' + valid_letters()
+    result = 'Invalid letter, this are the valid ones: ' + valid_letters()
 
 # Translation
 if not result:
@@ -29,7 +29,7 @@ if not result:
         result = translate_to_decimal(number.upper())
 
 # Strict roman numeral validation
-if not to_roman:
+if not to_roman and result is int:
     if more_than_three(number.upper()) or more_than_one_5(number.upper()) \
             or invalid_subtractions(number.upper()) or invalid_order(number.upper()):
         result = str(result) + ' (but it is not following the rules) it should be ' + translate_to_roman(result)
