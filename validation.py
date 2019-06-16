@@ -27,8 +27,8 @@ def valid_letters():
 
 
 # Strict rules
-def no_more_than_three(number=''):
-    """ Returns True if there are no more than three consecutive numerals """
+def more_than_three(number=''):
+    """ Returns True if there are more than three consecutive numerals (ex: IIII) """
     prev = ''
     counter = 0
     for letter in number:
@@ -37,14 +37,14 @@ def no_more_than_three(number=''):
         else:
             counter = 1
         if counter > 3:
-            return False
+            return True
         prev = letter
 
-    return True
+    return False
 
 
-def no_more_than_one(number=''):
-    """ Returns True if there are no more than one 5 based numeral """
+def more_than_one_5(number=''):
+    """ Returns True if there is more than one 5 based numeral (ex: VV) """
     prev = ''
     repetitions = 0
     for letter in number:
@@ -53,7 +53,18 @@ def no_more_than_one(number=''):
         else:
             repetitions = 0
         if repetitions >= 1:
-            return False
+            return True
         prev = letter
 
-    return True
+    return False
+
+
+def invalid_subtractions(number=''):
+    """ Returns True if there is an invalid subtraction (ex: IL, XM, VX) """
+    prev = number[0]
+    for letter in number[1:]:
+        if TO_DECIMAL[prev] < TO_DECIMAL[letter] and (prev + letter) not in VALID_SUBTRACTIONS:
+            return True
+        prev = letter
+
+    return False

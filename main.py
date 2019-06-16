@@ -4,8 +4,9 @@ from translator_a import show
 from validation import valid_number
 from validation import valid_word
 from validation import valid_letters
-from validation import no_more_than_one
-from validation import no_more_than_three
+from validation import more_than_one_5
+from validation import more_than_three
+from validation import invalid_subtractions
 
 
 # Input
@@ -28,8 +29,8 @@ if not result:
 
 # Strict roman numeral validation
 if not to_roman:
-    if not no_more_than_three(number.upper()) or not no_more_than_one(number.upper()):
-        result = str(result) + ' (but it is not following the rules)'
+    if more_than_three(number.upper()) or more_than_one_5(number.upper()) or invalid_subtractions(number.upper()):
+        result = str(result) + ' (but it is not following the rules) it should be ' + translate_to_roman(result)
 
 # Output
 print(result)
