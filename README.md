@@ -9,10 +9,10 @@ This is the **simple** and **efficient** way to do it. Defining four tuples of a
 - **The last 3**: *1000, 2000, 3000*
 
 Getting the proper combination for every digit. For example, for the number *437*:
-- For the first digit, access the third tuple with *4* and get `CD`
-- For the second digit, access the second tuple with *3* and get `XXX`
-- For the third digit, access the first tuple with *8* and get `VII`
-- Finally, Concatenate the all results to get `CDXXXVII`
+1. For the first digit, access the third tuple with *4* and get `CD`
+2. For the second digit, access the second tuple with *3* and get `XXX`
+3. For the third digit, access the first tuple with *8* and get `VII`
+4. Finally, Concatenate the all results to get `CDXXXVII`
 
 ### Algorithm B
 This a more **complex** and less efficient algorithm but also more **interesting**... See code and try to understand it for yourself.
@@ -32,10 +32,10 @@ To resolve the problem of getting a digit from a number I explored three differe
 If **algorithm B** is used for translation of roman numerals to decimal number system adding and subtraction rules are applied without any validation, this means that numbers like `IIII`, `IC`, `VV` or even `MMMMMMM` are translated and produce a logical result given the rules (so *4*, *99*, *10* and *70000*).
 
 The translation of invalid numbers is made but with a comment pointing it out and providing the proper roman numeral. The rules checked to consider a roman numeral fully valid are:
-- No more than three consecutive numerals
-- No more than one consecutive *5* based numeral
-- No invalid subtractions (ex: IL, XM, VX)
-- No invalid ordering (smaller numbers before bigger ones) if it is not a valid subtraction (ex: IC, IIV, VC, XDM)
+- No more than three consecutive numerals (ex: `IIII`)
+- No more than one consecutive *5* based numeral (ex: `VV`)
+- No invalid subtractions (ex: `IL`, `XM`, `VX`)
+- No invalid ordering (smaller numbers before bigger ones) if it is not a valid subtraction (ex: `IC`, `IIV`, `VC`, `XDM`)
 
 ## Usage
 This program is compose of several Python 3 scripts with no dependencies on external libraries. 
