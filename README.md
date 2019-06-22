@@ -1,6 +1,6 @@
 # Roman Numeral Translator
 Trying different algorithms to translate modern **decimal system** numbers to **roman numerals** and viceversa.
-## Explanation of the algorithms
+## Translation algorithms
 ### Algorithm A
 This is the **simple** and **efficient** way to do it. Defining four tuples of all combinations of numbers:
 - **To 10**: *1,2,3,4...10*
