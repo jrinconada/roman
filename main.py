@@ -18,7 +18,7 @@ to_roman = number.isdigit()
 result = ''
 if to_roman and not valid_number(eval(number)):  # Validate range
     result = 'It must be an integer number between 1 and 3999'
-elif not valid_word(number):  # Validate letters
+elif not to_roman and not valid_word(number):  # Validate letters
     result = 'Invalid letter/s, this are the valid ones: ' + valid_letters()
 
 # Translation
